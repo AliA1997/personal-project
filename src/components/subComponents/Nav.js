@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import logo from '../../logo.png';
 
 class Nav extends Component {
     constructor() {
@@ -12,7 +13,7 @@ class Nav extends Component {
         return (
             <div>
                 <div className='logo-div'>
-                    <span><img height='200' width='100' src='https://www.happyceliac.com/wp-content/uploads/2018/02/placeholder-image.png' rel='munther logo'/></span>
+                    <span><img height='100' width='100' src={logo} alt='munther logo'/></span>
                 </div>
                 <nav className='main-nav'>
                     <div className='link-pane'><Link to='/inventory'>Buy</Link></div>

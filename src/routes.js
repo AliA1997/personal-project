@@ -6,13 +6,13 @@ import Dashboard from './components/Dashboard';
 import Locations from './components/Locations';
 import Services from './components/Services';
 import Register from './components/subPages/Register';
-import CreateCar from './components/subPages/CreateCar';
+import CarForm from './components/subPages/CarForm';
 
 const routes = (
     <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/register' component={Register} />
-        <Route path='/create_posting' component={CreateCar} />
+        <Route path='/create_posting' component={CarForm} />
         <Route path='/inventory' component={Sales} />
         <Route path='/sales_schedule' component={Sales} />
         <Route path='/event_sales' component={Sales} />        

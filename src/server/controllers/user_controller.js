@@ -2,7 +2,6 @@ const uuid = require('uuid');
 
 module.exports = {
     getUserData: (req, res) => {
-        console.log(req.session.user);
         res.status(200).json({user: req.session.user});
     },
     register: (req, res) => {

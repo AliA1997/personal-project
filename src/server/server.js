@@ -25,19 +25,13 @@ app.use(session({
 massive(process.env.CONNECTION_STRING).then(database => {
     app.set('db', database);
 });
-
-app.get('/api/cars', carsCtrl.readAllCars);
-app.get('/api/:id/cars', carsCtrl.readCars);
 app.post('/api/:id/cars', carsCtrl.crteCars);
 app.patch('/api/:id/cars/:carId', carsCtrl.updCars);
-app.delete('/api/:id/cars/:carId', carsCtrl.delCars);
-
-
+app.patch('/api/:id/cars/:carId', carsCtrl.delCars);
 app.post('/api/register', userCtrl.register);
 app.patch('/api/:userId', userCtrl.editProfile);
 app.post('/api/logout', userCtrl.logout);
 app.post('/api/login', userCtrl.login);
-
 app.get('/api/user-data', userCtrl.getUserData);
 
 app.listen(PORT, () => console.log('Listening on Port: ', PORT));

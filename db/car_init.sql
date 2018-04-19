@@ -7,6 +7,8 @@ CREATE TABLE cars (
     model VARCHAR(40),
     year INTEGER, 
     odometer INTEGER, 
-    condition_report_id INTEGER, 
-    location TEXT
+    condition_report_id TEXT, 
+    location TEXT,
+    price INTEGER,
+    imageurl TEXT
 );

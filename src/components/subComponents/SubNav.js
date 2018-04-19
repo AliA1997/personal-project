@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+// import {Link} from 'react-router-dom';
 
 class SubNav extends Component {
     constructor() {
@@ -12,14 +12,12 @@ class SubNav extends Component {
         const { clicked } = this.state;
         return (
             <div>
-                <div className='logo-div'>
-                    <span><img src='fhjkashdl' rel='munther logo'/></span>
-                </div>
+
                 <nav className='main-nav'>
                     <ul>
-                        {this.props.list.map(item => {
+                        {this.props.list.map((item, index) => {
                             return (
-                                <div style={{'display': clicked ? 'inline-block' : 'none'}}>
+                                <div key={index} style={{'display': clicked ? 'inline-block' : 'none'}}>
                                     <li>{item}</li>
                                     <pre>{this.props.info}</pre>
                                 </div>

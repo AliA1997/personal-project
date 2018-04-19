@@ -1,0 +1,1 @@
+SELECT username, email, name, company_name, type, id FROM users WHERE username = $1 AND password = $2;
