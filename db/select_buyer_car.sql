@@ -1,0 +1,1 @@
+SELECT * FROM munther_auction_cars WHERE id = $1;

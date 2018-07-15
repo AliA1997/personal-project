@@ -1,0 +1,125 @@
+.desktop {
+    display: none;
+}
+.logo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.mobile {
+    display: inline-block;
+}
+.nav-div {
+    width: 100vw;
+    display: grid;
+    grid-template-rows: 20% 60% 20%;
+    grid-template-columns: 10% 80% 10%;
+}
+.nav-div > * {
+    grid-column: 2/2;
+}
+.link-pane {
+    background: darkblue;
+}
+.link {
+    padding-left: 3em;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    padding-right: 3em;
+    display: flex;
+    justify-content: center;
+}
+.clicked-link-pane {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: gold;
+}
+.clicked-link-pane > .link {
+    color: darkblue;
+}
+.link-pane > .link {
+    color: gold;
+}
+.search {
+    display: flex;
+    width: 100%;
+    margin-bottom: 2em;
+}
+.search > input {
+    height: 100%;
+}
+.search > button {
+    height: 100%;
+    width: 25%;
+}
+.mobile.main-nav-not-clicked {
+    display: none;
+}
+.mobile.main-nav-clicked {
+    background: darkblue;
+    display: inline-block;
+    width: 100%;
+}
+.hamburger-icon {
+    font-size: 4em;
+    color: darkblue;
+}
+.hamburger-icon-clicked {
+    color: gold;
+}
+ @media screen and (min-width: 600px) {
+    .loggedIn-header {
+        width: 100%;
+    }
+    .welcome-pane > button {
+        font-size: 1.1em;
+        font-weight: 800;
+        padding: 1em;
+    }
+    .hamburger-icon {
+        font-size: 4em;
+        color: darkblue;
+    }
+    .hamburger-icon-clicked {
+        color: gold;
+    }
+ }
+
+ @media screen and (min-width: 1260px) {
+     .mobile {
+         display: none;
+     }
+     .desktop {
+         display: inline-block;
+     }
+     .login-div {
+        grid-row: 3/3;
+     }
+     .desktop.main-nav-not-clicked {
+         grid-column-start: 1;
+         grid-row: 2/2;
+         display: flex;
+         background: #fff;
+     }
+     .nav-div {
+         background: none;
+     }
+     .links {
+         display: grid;
+         height: 100%;
+         width: 100%;
+         grid-template-columns: 15% 15% 15% 15% 15% 15%;
+         grid-row: 2/2;
+         margin: 0;
+         grid-column: 0/3;
+     }
+     .hamburger-icon {
+         display: none;
+     }
+     .desktop.main-nav-not-clicked > .links > .link-pane {
+         opacity: 0.75;
+         background: darkblue;
+     }
+}

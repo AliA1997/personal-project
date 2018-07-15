@@ -1,1 +1,1 @@
-SELECT * FROM cars;
+SELECT * FROM munther_auction_cars;

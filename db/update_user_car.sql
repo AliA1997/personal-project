@@ -1,4 +1,4 @@
-UPDATE cars 
+UPDATE munther_auction_cars 
 SET id = ${id},
     user_id = ${user_id}, 
     type = ${type}, 
@@ -6,10 +6,9 @@ SET id = ${id},
     model = ${model},
     year = ${year},
     odometer = ${odometer},
-    condition_report_id = ${condition_report_id}, 
     location = ${location},
     price = ${price},
     imageurl = ${imageurl}
 WHERE id = ${id} AND user_id = ${user_id};
 
-SELECT * FROM cars WHERE id = ${id} AND user_id = ${user_id};
+SELECT * FROM munther_auction_cars WHERE id = ${id} AND user_id = ${user_id};

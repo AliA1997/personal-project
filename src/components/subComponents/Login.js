@@ -1,86 +1,110 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { chgUserState, userLogin } from '../../redux/reducer';
+import { chgUserState, userLogin, userLogout } from '../../redux/reducers/user_reducers';
 import { Link } from 'react-router-dom';
-
+import Loader from './Loader';
+import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 class Login extends Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: false,
-
+            loading: true 
         }
     }
     componentDidMount() {
-        const { userLogin } = this.props;
-        axios.get('/api/user-data').then(res => {
-            if(res.data.user !== undefined) {
-                this.setState({loggedIn: true});
-                userLogin(res.data.user[0]);
-                window.location = `http://localhost:${window.location.port}/#/dashboard`;
-            } else {
-                // window.location =  `http://localhost:${window.location.port}/#/`;
-                this.setState({loggedIn: false});
-            }
-        })
+        const { user } = this.props;
+        const { account } = user;
+            axios.get('/api/user-data').then(res => {
+                if(res.data.user) {
+                    const { userLogin } = this.props;
+                    userLogin(res.data.user[0]);
+                    console.log('Login response data----', res.data.user[0]);
+                    console.log('Login account data-------', account);
+                    this.props.loginProp();
+                } 
+                this.setState({loading: false});
+            }).catch(err => console.log('User Data Axios Error----------', err));
     }
-    login() {
+    login(e) {
+        e.preventDefault();
+        this.setState({clickedButton: true});
         const { userLogin } = this.props;
-        const { username, password } = this.props.account;
-        axios.post('/api/login', { username, password }).then(res => {
-            if(res.data.user[0]) {
-                userLogin(res.data.user[0]);
-                this.setState({loggedIn: true});
-            }
-        })
-    }
+        const { username, password } = this.props.user.account;
+            axios.post('/api/login', { username, password }).then(res => {
+                if(res.data.user) {
+                    console.log('Data-------', res.data.user);
+                    userLogin(res.data.user);
+                    this.props.loginProp();
+                    alert('Login successful');
+                } else {
+                    alert('Error login not valid!!');
+                }
+            })
+        }
     logout(e) {
-
+        const { userLogout } = this.props;
+        e.preventDefault();
         axios.post('/api/logout').then(res => {
             console.log(res.data.message);
-        })
+            userLogout();
+        })        
+        this.props.logoutProp(e);
     }
+
     render() {
         //chgUserState <-- Method in reducer.
-        //currentUser <-- state in reducer.
-        const { chgUserState, currentUser } = this.props;
-        const { loggedIn } = this.state;
-        return (
-            <div>
-                <div className='login-view' style={{'display': loggedIn ? 'none' : 'inline-block'}}>
-                    <form onSubmit={e => this.login()}>
-                        <input type='text' onChange={e => chgUserState(e, 'username', e.target.value)} />
-                        <input type='text' onChange={e => chgUserState(e, 'password', e.target.value)} />                
-                        <button type='submit'>Login</button>
-
-                    </form>
+        const { chgUserState } = this.props;
+        const { account, isLoggedIn } = this.props.user; 
+        const { loading } = this.state;
+        console.log('------AccountData', account);
+        if(!loading) {
+            return (
+                <div className='login-div'>
+                    <div className='login-view' style={{display: account.email.length ? 'none' : 'flex'}}>
+                        <form onSubmit={e => this.login(e)}>
+                            <label>Username</label>
+                            <br/>
+                            <input type='text' 
+                            autoComplete='name'
+                            min='8'
+                            onChange={e => chgUserState(e, 'username', e.target.value)} required/>
+                            <br/>
+                            <label>Password</label>
+                            <br/>
+                            <input autoComplete='password' type='password' min='8' onChange={e => chgUserState(e, 'password', e.target.value)} required/><br/>               
+                            <button type='submit'>Login</button>
+                            <h5 className='register-text'>Already have an account?</h5>
+                            <h3 className='register-link'><Link className='register-link' to='/register'>Register Here.</Link></h3>
+                        </form>
+                    </div>
+                    <div className='welcome-pane' style={{display: (!account.email.length) ? 'none' : 'inline-block'}}>
+                        <div className='loggedIn-header'>
+                            <h3 >{account && `Welcome ${account.username}`}</h3>
+                        </div>
+                        <br/>
+                        <button onClick={e => this.logout(e)}>Logout</button>
+                    </div>
                 </div>
-                <div className='welcome-pane' style={{'display': loggedIn ? 'inline-block' : 'none'}}>
-                    <h1>Welcome {currentUser.username}</h1>
-                    <button onClick={this.logout}>Logout</button>
-                </div>
-                <div className='general-view' style={{'display': loggedIn ? 'inline-block' : 'none'}}>
-                    <h3>Locations</h3>
-                    <ul>
-                        <li><Link to={`/inventory/ca`}>California</Link></li>
-                        <li><Link to={`/inventory/nv`}>Nevada</Link></li>
-                        <li><Link to={`/inventory/az`}>Arizona</Link></li>
-                    </ul>
-                </div>
-            </div>
-        )
+            )
+        } else {
+            return <Loader />
+        }
     }
 }
 
 const mapStateToProps = state => {
-    return state;
+    return {
+        user: state.user,
+        car: state.car
+    }
 }
 
 const mapDispatchToProps = {
     chgUserState,
-    userLogin
+    userLogin,
+    userLogout,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

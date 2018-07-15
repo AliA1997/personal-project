@@ -1,28 +1,1299 @@
-.App {
+
+a {
+  text-decoration: none;
+}
+  img {
+    height: 10em;
+    width: 10em;
+  }
+  .slideshow {
+    display: inline-block;
+    text-align: center;
+    width: 80vw;
+    height: 40vh;
+  }
+  .slideshow-div {
+    text-align: center;
+  }
+  .images-wrap > div > img{
+    width: 60vw;
+    height: 40vh;
+  }
+  .app {
+    margin-top: 5vh;
+    font-size: 20px;
+    line-break: all;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  }
+  .loggedIn-header {
+    margin-right: 33vw;
+    border: solid 1px white;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+    width: 100%;
+    background: darkblue;
+    color: gold;
+  }
+  .loggedIn-header > h3 {
+    text-align: right;
+  }
+
+  .logo-div {
+    height: 10vh;
+    width: 100vw;
+    text-align: center;
+  }
+  .logo-div > span {
+    width: 100vw;
+  }
+  .logo-div > .logo-link > span > img {
+    height: 100px;
+    width: 100px;  
+
+  }
+
+  .description-textarea {
+    width : 60vw;
+    height: 10vh;
+  }
+
+  /*Login View */
+  .login-view {
+    display: flex;
+    word-break: break-word;
+  }
+  div > form {
+    text-align: center
+  }
+  .login-view > form > input {
+    height: 5vw;
+  }
+
+  /*Button Styling */
+  button {
+    padding: 10px;
+    background: darkblue;
+    color: gold;
+    width: 30vw;
+  }
+
+  button:active {
+    background: gold; 
+    color: darkblue;
+  }
+  button > .car-link {
+    color: gold;
+    text-decoration: none;
+  }
+
+  button > .link {
+    text-decoration: none;
+    color: gold;
+  }
+  /* */
+  /* Input styling */
+  input {
+    flex: 1;
+    background: lightgrey;
+    width: 80vw;
+  }
+
+  .select-input {
+    height: 2.5vh;
+    width: 80vw;
+    text-align: center;
+  }
+  
+
+  /* Logged In Styles */
+  /* Navbar */
+
+  div > * {
+    margin-right: auto;
+    margin-left: auto;  
+    text-align: center;
+  }
+
+
+  div > .general-view {
+    text-align: center;
+    width: 60vw;
+  }
+  div > .general-view > ul {
+    text-align:center;
+    list-style: none;
+    padding: 30px;
+    width: 100%;
+  }
+  div > .general-view > ul > li {
+    padding: 10px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+
+
+
+  /* Footer */
+  footer {
+    text-align: left;
+    background: lightcyan;
+    margin-top: 90vh;
+    height: 5vh;
+  }
+
+  /*Services Tab Styling */
+  .condition-report-table {
+    font-size: 14px;
+  }
+  .condition-report-table tbody tr:nth-child(2n + 1) {
+    background: #ffffe6;
+  }
+  .condition-report-info-list{
+    width: 80vw;
+    margin-left: 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+  }
+  .condition-report-info-list li:nth-child(2n + 1){
+    background: #ffffe2;
+  }
+
+  .arbitration-info > ul {
+    text-align: left;
+    background: #16160d;
+    font-size: 14px;
+  }
+
+  .mobile-view {
+    display: grid;
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: 33% 33% 33%;
+  }
+  .mobile-view > h6 {
+    grid-column: 2/2;
+    grid-row: auto;
+    width: 100%;
+  }
+  .mobile-view > h6 > .link {
+    text-decoration: none;
+    padding: 30px;
+    background: darkblue;
+    color: gold;
+  }
+  .mobile-view > h6 > .link:active{
+    background: darkblue;
+    color: gold;
+  }
+  .desktop-view {
+    display: none;
+  }
+  /* */ 
+
+   /* Schedule Page styling */
+ .recent-dates-div {
+  border: solid 1px black;
+  width: 80vw;
+}
+.schedule-div {
+  border: solid 1px black;
+}
+.schedule-div:nth-child(2n + 1) {
+  background-color: lightgrey;
+}
+.create-posting-div {
+ width: 80vw;
+ margin-bottom: 3em;
+}
+.create-posting-link {
+ text-decoration: none;
+ padding: 10px;
+ margin-left: auto;
+ margin-right: auto;
+ background-color: darkblue;
+ color: gold;
+}
+
+/* */
+
+/* SchedulePage styling */
+.recent-date {
+  width: 80vw;
+  background: darkblue;
+  color: gold;
+}
+ .recent-date:active {
+   background: gold;
+   color: darkblue;
+ }
+.recent-dates-div {
+  border: solid 1px black;
+  width: 80vw;
+}
+.schedule-div {
+  border: solid 1px black;
+}
+.schedule-div:nth-child(2n + 1) {
+  background-color: lightgrey;
+}
+.create-posting-div {
+ width: 80vw;
+ margin-bottom: 3em;
+}
+.create-posting-link {
+ text-decoration: none;
+ padding: 10px;
+ margin-left: auto;
+ margin-right: auto;
+ background-color: darkblue;
+ color: gold;
+}
+
+/* */
+
+
+ /* Locations Page styling */
+ .location-div {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 20% 40% 40%;
   text-align: center;
-}
+  /* grid-row: auto; */
+ }
+ .location-div > .tablet-view-locations {
+   width: 100%;
+   grid-column: 2/2;
+   grid-row: 2/2;
+ }
+ .location-div > .tablet-view-locations > .link {
+   height: 100%;
+   padding: 1em;
+ }
+ .location-div > .tablet-view-locations > .link > button {
+   padding: 1em;
+   font-size: 1em;
+ }
+ .location-div > *:last-child {
+  width: 3em;
+  height:  100%;
+  grid-row: 3/3;
+  grid-column: 2/2;
+  margin-left: -40px;
+  padding: 10px;
+ }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+  .location-div > .mobile-view > * + * {
+    margin-top: 30px
+  } 
+  .location-div > .mobile-view > button {
+    width: 60%;
+    padding: 20px;
+  }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
+  /* Filter Checkbox */
+  form > .filter-checkbox {
+    display: flex;
+  }
+  .filter-checkbox {
+    display: flex;
+    padding: 5px;
+    flex: 4;
+  }
+  .filter-checkbox > * {
+    width: 5vw;
+    flex: 4;
+  }
+  /* */
+
+
+  /* Create a Car styling */
+  .create-car-form {
+    width: 80vw;
+  }
+
+
+  /*Edit Car Pane */
+  .edit-car-pane {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;  
+  }
+
+
+    /* Car Listing Styling*/
+    div > .listing-container {
+      width: 80vw;
+    }
+    .lisiing-container {
+      display: flex;
+    }
+    .listing-box {
+      flex: 1;
+      display: flex;
+    }
+
+  .listing-box > div:first-child {
+    height: 10em;
+    width: 10em;
+    padding: 5px;
+  }
+  /* */
+  /**/
+  /* Register View */
+  .register-view >  form > img {
+    margin-right: auto;
+    margin-left: auto;
+    width: 60%;
+    height: 100%;
+  }
+
+  .register-view > form > * + * {
+    margin-bottom: 2.5em;
+  }
+  .register-view > form > input {
+    height: 2.5vh;
+    
+  }
+  .register-view > form > .radio-buttons-div {
+    display: flex;
+    text-align: center;
+  }
+  .register-view > form > .radio-buttons-div > label {
+    margin-left: 100px;
+    margin-right: -100px;
+  }
+
+  .register-view > form > .radio-buttons-div > .radio-buttons {
+    margin-right: -100px;
+  }
+  .register-view > form > input {
+    width: 80vw;
+  }
+
+  .register-link {
+      margin-right: auto;
+      margin-left: auto;   
+      padding: 5px; 
+      width: 60vw;
+      text-decoration: none;
+      background-color: darkblue;
+      color: gold;
+  }
+  /* */
+
+
+  /*Seller Dashboard */
+
+  .seller-cars {
+    width: 100vw;
+    text-align: center;
+  }
+  .seller-cars > ul {
+    width: 80vw;
+    text-align: center;
+    padding-right: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+
+  /*Edit Profile Styling*/
+  .edit-profile-spans {
+    width: 33vw;
+  }
+  .main-div-clicked {
+    height: 10vh;
+    display: flex;
+  }
+  .main-div-clicked > input {
+      width: 66%;
+  }
+  .main-div-clicked > button {
+      height: 100%;
+      margin:0;
+  }
+
+@media only screen and (min-width: 600px) {
+  .slideshow {
+    display: inline-block;
+    text-align: center;
+    width: 80vw;
+    height: 40vh;
+  }
+  .images-wrap > div > img{
+    width: 60vw;
+    height: 40vh;
+  }
+  .loggedIn-header {
+    margin-right: 40vw;
+    border: solid 1px white;
+    border-bottom-right-radius: 1em;
+    border-top-right-radius: 1em;
+    width: 60vw;
+    background: darkblue;
+    color: gold;
+  }
+  .loggedIn-header > h3 {
+    text-align: right;
+  }
+  .logo-div > .logo-link > span > img {
+    height: 7.5em;
+    width: 10em;  
+
+  }
+  .logo-div {
+    height: 10vh;
+    width: 100vw;
+    text-align: center;
+    margin-bottom: 1.5em;
+  }
+  /* .nav-div > .hamburger-icon {
+    margin-top: 5vh;
+    height: 2em;
+    width: 2em;
+    color: blue;
+  } */
+  .main-nav-clicked > .links {
+    background: lightgrey;
+    height: 30%;
+  }
+  .register-text {
+    font-size: 1.5em;
+  }
+  .login-view > form > label {
+    font-size: 1.2em;
+  }
+  .login-div {
+    margin-top: 4em;
+  }
+  .teblet-view {
+    display: flex;
+  }
+  .tablet-view > * {
+    flex: 3;
+  }
+
+  /*SubNav */
+
+  nav {
+  list-style: none;
+  display: flex;
+  }
+  nav > * {
+  flex: 4;
+  text-align: center;
+  background: lightgrey;
+  }
+
+
+  nav > div > li {
+  background: transparent;
+  border-top-left-radius: 20%;
+  border-top-right-radius: 20%;  
+  padding: 10px;
+  }
+
+  nav > div > li:active {
+  background: transparent;
+  background-color: lightgrey;
+  color: darkblue;
+  }
+  nav > div > li:hover {
+  background: transparent;
+  background-color: lightgrey;
+  color: darkblue;
+  }
+  nav {
+  width: 80vw;
+  }
+
+  /*Services Tab Styling */
+  .condition-report-table {
+    font-size: 18px;
+  }
+  .condition-report-table tbody tr:nth-child(2n + 1) {
+    background: #ffffe6;
+  }
+  .condition-report-info-list{
+    width: 80vw;
+    margin-left: 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+  }
+  .condition-report-info-list li:nth-child(2n + 1){
+    background: #ffffe2;
+  }
+
+
+  .arbitration-page > h3 {
+    font-size: 2.5em;
+  }
+  .arbitration-info > ul {
+    text-align: left;
+    background: #ffffe2;
+    font-size: 18px;
+  }
+  .mobile-view {
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 33% 33% 33%
+  }
+  /* */ 
+    /* Schedule Page styling */
+  .recent-dates-div {
+    border: solid 1px black;
+    padding: 10px;
+    width: 80vw;
+  }
+  .schedule-div {
+    border: solid 1px black;
+    font-size: 20px;
+  }
+  .schedule-div:nth-child(2n + 1) {
+    background-color: beige;
+  }
+  .create-posting-div {
+  width: 80vw;
+  margin-bottom: 3em;
+  }
+  .create-posting-link {
+  text-decoration: none;
   padding: 20px;
-  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: darkblue;
+  color: gold;
+  }
+
+
+
+  /* Car Listing Styling*/
+  div > .listing-container {
+    width: 60vw;
+  }
+  .lisiing-container {
+    display: flex;
+  }
+  .listing-box {
+    flex: 1;
+    display: flex;
+  }
+
+  .listing-box > div:first-child {
+    height: 10em;
+    width: 10em;
+    padding: 5px;
+  }
+  /* */
+
+  /*Homepage Styling */
+  .home-page {
+    font-size: 22px;
+  }
+
+
+  footer {
+  background: lightcyan;
+  margin-top: 75vh;
+  height: 5vh;
+  }
+
+  /*Seller Dashboard */
+  .seller-cars {
+    width: 100vw;
+    text-align: center;
+  }
+  .seller-cars > ul {
+    width: 80vw;
+    text-align: center;
+    padding-right: 30px;
+    background: transparent;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 0.5px black;
+    border-radius: 5%;
+  }
+  .dashboard-div {
+    margin-top: 1.5em;
+    float: left;
+  }
+
+
+  /*Edit Profile Styling*/
+  .edit-profile-spans {
+  width: 33vw;
+  }
+  .main-div-clicked {
+  height: 10vh;
+  display: flex;
+  background: purple;
+  }
+  .main-div-clicked > input {
+  width: 66%;
+  }
+  .main-div-clicked > button {
+  height: 100%;
+  margin:0;
+  }
+
+
 }
 
-.App-title {
-  font-size: 1.5em;
-}
 
-.App-intro {
-  font-size: large;
-}
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+
+
+@media only screen and (min-width: 1260px){
+  .desktop {
+    display: inline-block;
+  }
+  .mobile {
+    display: none;
+  }
+  img {
+    height: 10em;
+    width: 10em;
+  }
+
+  .app {
+    margin-top: 5vh;
+    font-size: 20px;
+    line-break: all;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  }
+
+  /*Nav Bar styling */
+  .main-nav {
+    display: flex;
+    width: 100vw;
+  }
+
+  .logo-div {
+    height: 35vh;
+    width: 100vw;
+    text-align: center;
+    margin-bottom: 5em;
+    text-align: left;
+  }
+  .logo-div > span {
+    width: 100vw;
+  }
+  .logo-div > .logo-link > span > img {
+    height: 15em;
+    width: 15em;  
+
+  }
+  .mobile.hamburger-icon {
+    display: none;
+  }
+  .main-nav-not-clicked {
+    background: none;
+  }
+
+  .main-nav-not-clicked {
+    background: darkblue;
+    border: solid 2em transparent;
+    height: 10vh;
+    width: 100vw;
+    margin-top: 1em;
+    color: gold;
+  } 
+
+  .main-nav-not-clicked > .links {
+    height: 100%;
+    display: flex;
+    background: none;
+    margin: 0;
+    margin-top: -5em;
+  }
+  .main-nav-not-clicked > .links > .link-pane {
+    margin-left: auto;
+    margin-right: auto;  
+    margin: 5em 0;
+    width: 100%;
+    height: 100%;
+    background: darkblue;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;  
+    border: solid #f2f2f2 0.5px;
+    text-align: left;
+  }
+  .main-nav-not-clicked > .links > .link-pane > .link {
+    height: 100%;
+    padding: 1em;
+    color: gold;
+    text-decoration: none;
+  }
+  .main-nav-not-clicked > .links > .clicked-link-pane {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;  
+    margin: 5em 0;
+    width: 100%;
+    height: 100%;
+    background: gold;
+    border-top-left-radius: 15%;
+    border-top-right-radius: 15%;  
+    border: solid #f2f2f2 0.5px;
+  }
+  .main-nav-not-clicked > .links > .clicked-link-pane > .link {
+    text-decoration: none;
+    padding: 10px;
+    letter-spacing: 5px;
+    height: 100%;
+    color: darkblue;
+    font-size: 1em;
+  }
+  .main-nav-not-clicked > .links > .link-pane > .link {
+    text-decoration: none;
+    padding: 10px;
+    letter-spacing: 5px;
+    color: gold;
+    font-size: 1em;
+  }
+  /*Login View */
+  .login-div {
+    margin-right: 66vw;
+    width: 33vw;
+    margin-top: 1em;
+  }
+  .login-view {
+    display: flex;
+    word-break: break-word;
+    text-align: center;
+    border: 1px solid black;
+  }
+  .welcome-pane {
+    margin-top: 10px;
+    border: 1px solid black;
+    padding: 1em;
+    border-radius: 10%;
+  }
+  .loggedIn-header {
+    border: solid 1px black;
+    border-bottom-right-radius: 1em;
+    border-top-left-radius: 0.3em;
+    border-top-right-radius: 1em;
+    width: 80%;
+    display: flex;
+    background: darkblue;
+    color: gold;
+    font-size: 2em;
+    margin-left: -20px;
+  }
+  .loggedIn-header > h3 {
+    text-align: right;
+    flex: 1;
+  }
+  div > form {
+    text-align: center
+  }
+  .login-view > form > input {
+    height: 2vw;
+    width: 20vw;
+    overflow: hidden;        
+  }
+  .login-view > form > button {
+    height: 2em;
+    width: 10vw;
+    padding: 0.5em;
+  }
+  .login-view > form > label {
+    font-size: 1.2em;
+  }
+
+  /* Register View */
+
+  .register-view > form > * + * {
+    margin-bottom: 2.5em;
+  }
+  .register-view > form > img {
+    width: 60%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .register-view > form > input {
+    height: 2.5vh;
+  }
+  .register-view {
+    margin-top: 2em;
+    width: 60vw;
+    border: 1px solid black;
+  }
+  .register-view > form > .radio-buttons-div {
+    display: flex;
+    text-align: center;
+  }
+  .register-view > form > .radio-buttons-div > label {
+    margin-left: 100px;
+    margin-right: -100px;
+  }
+
+  .register-view > form > .radio-buttons-div > .radio-buttons {
+    margin-right: -100px;
+  }
+  .register-view > form > input {
+    width: 40vw;
+    font-size: 1.25em;
+  }
+  .register-text {
+    font-size: 1.5em;
+  }
+  .register-link {
+      margin-right: auto;
+      margin-left: auto;   
+      padding: 5px; 
+      width: 20vw;
+      text-decoration: none;
+      background-color: darkblue;
+      color: gold;
+  }
+
+  /*Button Styling */
+
+  button {
+    padding: 1em;
+    font-size: 1em;
+    margin-top: 2em;
+    background: darkblue;
+    color: gold; 
+    width: 20vw;
+  }
+
+  button:active {
+    background: gold; 
+    color: darkblue;
+  }
+  button > .car-link {
+    color: gold;
+    text-decoration: none;
+  }
+
+  button > .link {
+    text-decoration: none;
+    color: gold;
+  }
+  /* */
+
+  /* Filter Checkbox */
+  .filter-form {
+    width: 60vw;
+    background:beige;
+    border:1px solid transparent;
+    border-radius: 5%;
+    color: black;
+    display: flex;
+  }
+  .filter-form > .filter-checkbox {
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+    width: 5%;
+  }
+
+  .filter-form > .filter-checkbox > input {
+    margin-top: 20%;
+  }
+  /* */
+  /* Input styling */
+  input {
+    flex: 1;
+    font-size: 1em;
+    background: lightgrey;
+    width: 40vw;
+  }
+
+  .select-input {
+    height: 2.5vh;
+    width: 20vw;
+    text-align: center;
+  }
+  .address-info-break {
+    display: none;
+  }
+
+  .address-input {
+    width: 10%;
+  }
+
+
+  .city-input {
+    width: 60%;
+  }
+  .state-select {
+    width: 20%;
+  }
+  .country-input {
+    width: 20%;
+  }
+  .address-zipcode-info {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    height: 1.2em;
+    width: 80%;
+  }
+
+  .desktop-address-view {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 1.2em;
+    display: flex;
+  }
+  /* Logged In Styles */
+  /* Navbar */
+
+  div > * {
+    margin-right: auto;
+    margin-left: auto;  
+    text-align: center;
+  }
+
+
+  div > .general-view {
+    text-align: center;
+    width: 60vw;
+  }
+  div > .general-view > ul {
+    text-align:center;
+    list-style: none;
+    padding: 30px;
+    width: 100%;
+  }
+  div > .general-view > ul > li {
+    padding: 10px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Create a Car styling */
+  .create-car-form {
+    width: 60vw;
+  }
+
+
+
+  /*SubNav */
+  .search-input {
+    width: 33vw;
+    border: 1px solid black;
+    margin-top: 33%;
+    border-top-left-radius: 5%;
+  }
+
+  nav {
+    list-style: none;
+    display: flex;
+  }
+  nav > * {
+    flex: 4;
+    text-align: center;
+    background: gold;
+  }
+
+
+  nav > div > li {
+    background: transparent;
+    border-top-left-radius: 20%;
+    border-top-right-radius: 20%;  
+    padding: 10px;
+  }
+
+  nav > div > li:active {
+    background: transparent;
+    background-color: gold;
+    color: darkblue;
+  }
+  nav > div > li:hover {
+    background: transparent;
+    background-color: gold;
+    color: darkblue;
+  }
+  nav {
+    width: 80vw;
+  }
+
+  /*Edit Car Pane */
+  .edit-car-pane {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;  
+  }
+
+
+  /*Seller Dashboard */
+  .seller-cars {
+    width: 100vw;
+    text-align: center;
+  }
+  .seller-cars > ul {
+    width: 80vw;
+    text-align: center;
+    padding-right: 30px;
+    background: transparent;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid 0.5px black;
+    border-radius: 5%;
+  }
+  .dashboard-div{
+    margin: 2em;
+    float: left;
+  }
+  .dashboard-div > nav {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+  .dashboard-div > nav > .profile-info-pane {
+    grid-column: 1/1;
+    width: 100%;
+  }
+  .dashboard-div > nav > .general-info-pane {
+    grid-column: 2/2;
+    width: 100%;
+  }
+  .dashboard-div > nav > .dashboard-results-div > .general-info-links-div {
+    list-style: none;
+    background: purple;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 100%;
+  }
+  .general-info-sublinks-div {
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    width: 100%;
+  }
+ .seller-cars.child-pane {
+   /* margin: 100px; */
+    background: green;
+    /* display: grid;
+    grid-template-rows: 20% 80%; */
+    width: 100%;
+    height: 100%;
+  } 
+  /* .seller-cars.child-pane > ul {
+    background: purple;
+    grid-row: 2/2;
+  } */
+  /*Services Tab Styling */
+  .condition-report-table {
+    font-size: 18px;
+  }
+  .condition-report-table tbody tr:nth-child(2n + 1) {
+    background: #ffffe6;
+  }
+  .condition-report-info-list{
+    width: 80vw;
+    margin-left: 0;
+    list-style: none;
+    font-size: 14px;
+    text-align: left;
+  }
+  .condition-report-info-list li:nth-child(2n + 1){
+    background: #ffffe2;
+  }
+  .arbitration-page > h3 {
+    font-size: 2.5em;
+  }
+  .arbitration-info > ul {
+    text-align: left;
+    background: #ffffe2;
+    font-size: 18px;
+  }
+
+  .mobile-view {
+    display: none;
+  }
+  .desktop-view {
+    display: flex;
+    background: lightgray;
+    width: 80vw;
+  }
+
+  .desktop-view > h6 > .link {
+    text-decoration: none;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 30px;
+    background: darkblue;
+    color: gold;
+  }
+  .desktop-view > h6 > .link:active{
+    background: darkblue;
+    color: gold;
+  }
+  /* */ 
+
+  /* SchedulePage styling */
+
+  /* Locations Page styling */
+  
+  .location-div > .tablet-view-locations {
+    display: flex;
+  }
+  .location-div > .tablet-view-locations > button {
+    padding: 30px;
+    width: 100%;
+  }
+
+
+  /* Car Listing Styling*/
+  div > .listing-container {
+    width: 60vw;
+  }
+  .lisiing-container {
+    display: flex;
+  }
+  .listing-box {
+    flex: 1;
+    display: flex;
+  }
+
+  .listing-box > div:first-child {
+    height: 10em;
+    width: 10em;
+    padding: 5px;
+  }
+  /* */
+  /**/
+  /**/
+  /* Schedule Page styling */
+  .recent-dates-div {
+    border: solid 1px black;
+    padding: 10px;
+    width: 80vw;
+  }
+  .schedule-div {
+    border: solid 1px black;
+    font-size: 20px;
+  }
+  .schedule-div:nth-child(2n + 1) {
+    background-color: beige;
+  }
+  .create-posting-div {
+    width: 80vw;
+    margin-bottom: 3em;
+  }
+  .create-posting-link {
+    text-decoration: none;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: darkblue;
+    color: gold;
+  }
+
+  /* */
+
+  /*Edit Profile Styling*/
+  .edit-profile-spans {
+    width: 33vw;
+  }
+  .main-div-clicked {
+    height: 10vh;
+    display: flex;
+    background: purple;
+  }
+  .main-div-clicked > input {
+    width: 66%;
+  }
+  .main-div-clicked > button {
+    height: 100%;
+    margin:0;
+  }
+  /* */
+
+  nav > div {
+    width: 80vw;
+    background: lightgray;
+    color: black;
+  }
+  nav > div > .seller-cars:active {
+    background: black;
+    color: beige;
+  }
+  nav > div > .bought-cars:active {
+    background: black;
+    color: beige;
+  }
+  nav > div > .search-history:active {
+    background: black;
+    color: beige;
+  }
+
+  /*Homepage Styling */
+  .home-page {
+    font-size: 22px;
+  }
+
+  footer {
+    background: lightcyan;
+    margin-top: 75vh;
+    height: 5vh;
+  }
+  /* */
+
+  .edit-profile-form { 
+    width: 100vw;
+    height: 75em;
+  }
+  .address-div {
+    display: none;
+  }
+  .edit-profile-form > form  {
+    margin-left: 40vw;
+    text-align: right;
+    width: 40vw;
+  }
+  .desktop-div {
+    display: flex;
+  }
+  .desktop-div  > span { 
+    height: 100%;
+    margin-left: 0;
+    margin-top: 1.2em;
+    width: 33%;
+  }
+
+  .edit-profile-form > form > div > div > span {
+    margin-right: 66vw;
+  }
+  .edit-profile-form > form > div > div > button {
+    width: 35%;
+  }
+  .edit-profile-form > form > div > div > br {
+    margin: 0;
+  }
+  .img-div { 
+    width: 40vw;
+    height: 30em;
+    margin-left: 0;
+    margin-bottom: -30em;
+  }
+  .img-div > .profile-image {
+    margin-top: 10px;
+    width: 80%;
+    height: 80%;
+  }
+  .slideshow {
+    display: inline-block;
+    text-align: center;
+    width: 60vw;
+    height: 40vh;
+  }
+  .images-wrap > div > img{
+    width: 60vw;
+    height: 40vh;
+  }
 }

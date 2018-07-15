@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
-import { HashRouter as R } from 'react-router-dom';
+import { BrowserRouter as R } from 'react-router-dom';
 import store from './redux/store';
 // import registerServiceWorker from './registerServiceWorker';
 

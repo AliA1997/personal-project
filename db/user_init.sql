@@ -1,12 +1,15 @@
-CREATE TABLE users (
-    id SERIAL UNIQUE PRIMARY KEY, 
-    type VARCHAR(40),
+CREATE TABLE munther_auction_users (
+    id SERIAL PRIMARY KEY UNIQUE, 
     name VARCHAR(100),
     dealer BOOLEAN, /*BOOLEAN or BOOL*/
-    account_id UNIQUE TEXT, 
-    email VARCHAR(80),
-    username VARCHAR(80), 
+    account_id TEXT UNIQUE, 
+    email TEXT UNIQUE,
+    username VARCHAR(80) UNIQUE, 
     password TEXT,  
-    seller_id TEXT
-
+    company_name VARCHAR(90),
+    phone_number TEXT,
+    seller_id TEXT  UNIQUE,
+    imageurl TEXT
 );
+
+ALTER TABLE munther_auction_users ADD COLUMN imageurl TEXT;

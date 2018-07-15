@@ -1,1 +1,1 @@
-SELECT * FROM cars WHERE user_id = $1;
+SELECT * FROM munther_auction_cars WHERE user_id = $1;

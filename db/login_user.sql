@@ -1,1 +1,1 @@
-SELECT username, email, name, company_name, type, id FROM users WHERE username = $1 AND password = $2;
+SELECT username, email, name, company_name, seller_id, account_id, phone_number FROM munther_auction_users WHERE username = $1;
