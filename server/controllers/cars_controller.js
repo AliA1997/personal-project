@@ -30,7 +30,7 @@ module.exports = {
         console.log('id-------------', id);
         const {type, make, model, year, odometer, location, price, imageurl, description} = req.body;
         const newCar = {
-            user_id: +id,
+            user_id: +user_id,
             username,
             seller_id,
             type,

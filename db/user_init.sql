@@ -9,7 +9,11 @@ CREATE TABLE munther_auction_users (
     company_name VARCHAR(90),
     phone_number TEXT,
     seller_id TEXT  UNIQUE,
-    imageurl TEXT
+    imageurl TEXT,
+    cars_bid_on JSONB[],
+    verification_link TEXT,
+    verified BOOLEAN
 );
+
 
 ALTER TABLE munther_auction_users ADD COLUMN imageurl TEXT;

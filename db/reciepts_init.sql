@@ -1,3 +1,4 @@
+
 CREATE TABLE munther_auction_reciepts (
     id SERIAL PRIMARY KEY,
     last_four INTEGER,
