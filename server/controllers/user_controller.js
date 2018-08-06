@@ -1,3 +1,4 @@
+const nodemailerCtrl = require('./nodemailer_controller');
 const uuid = require('uuid');
 const bcrypt = require('bcrypt');
 const saltRounds = 12;
@@ -29,7 +30,8 @@ module.exports = {
             company_name,
             imageurl,
             seller_id: dealer ? uuid.v4() : null,
-            account_id: `${username}-${accountId}-${email}` 
+            account_id: `${username}-${accountId}-${email}`,
+            verification_link: uuid.v4()
         }
         console.log('newUser-------------------------------------', newUser);
         const userAddress = {
@@ -43,7 +45,8 @@ module.exports = {
         const dbInstance = req.app.get('db');
         dbInstance.register_user(newUser).then(user => {
             req.session.user = user[0];
-            
+            //Sends a verification email after the user registers, by retrieving the email, username, and verification_link from user.
+            nodemailerCtrl.verificationEmail(req.session.user.username, req.session.user.email, req.session.user.verification_link);
             req.session.save();
             console.log('User Registered!!', req.session.user);
             userAddress.user_id = req.session.user.id;

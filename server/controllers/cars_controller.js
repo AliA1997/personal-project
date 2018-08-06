@@ -1,4 +1,5 @@
 const uuid = require('uuid');
+const nodeCron = require('node-cron');
 module.exports = {
     readFilteredCars: (req, res) => {
         const { state } = req.params;
@@ -15,7 +16,8 @@ module.exports = {
         const { id } = req.params;
         const dbInstance = req.app.get('db');
         dbInstance.select_buyer_car(id).then(car => {
-            res.status(200).json({car});
+            const sortedBids = car[0].bids.sort((a, b) => +a.bid < b.bid)
+            res.status(200).json({car, bids: sortedBids.map((bid, i) => i < 5 && bid)});
         }).catch(err => console.log('Select Buyer Car Database Error-----------', err));
     },
     readAllCars: (req, res) => {
@@ -25,12 +27,11 @@ module.exports = {
         }).catch(err => console.log('Read ALl Cars Error--------------', err));
     },
     crteCars: (req, res) => {
-        const { id, user_id, username, seller_id } = req.session.user;
-        console.log(user_id);
+        const { id, username, seller_id } = req.session.user;
         console.log('id-------------', id);
-        const {type, make, model, year, odometer, location, price, imageurl, description} = req.body;
+        const {type, make, model, year, odometer, location, price, imageurl, description, expiration_date} = req.body;
         const newCar = {
-            user_id: +user_id,
+            user_id: +id,
             username,
             seller_id,
             type,
@@ -43,12 +44,36 @@ module.exports = {
             price: Number(price), 
             imageurl,
             condition_report_id: `${uuid.v4()}`,
-        }
+        };
+        const task = nodeCron.schedule(`* * */${+expiration_date} * * *`, function() {
+            carBidExpire(dbInstance, newCar);
+        }, false);
         console.log(newCar);        
         const dbInstance = req.app.get('db');
         dbInstance.create_car(newCar).then(newCar => {
-            res.status(200).json({newCar});
+            res.json({newCar});
         }).catch(err => console.log(err));
+    },
+    carBidExpire(dbInstance, newCar) {
+            const { user_id, type, make, model, year, odometer, location, price, imageurl, description} = newCar;
+            const newSoldCar = {
+                buyer: +user_id,
+                username,
+                seller: seller_id,
+                type,
+                make, 
+                model, 
+                year: Number(year), 
+                description,
+                odometer: Number(odometer), 
+                location,
+                price: Number(price), 
+                imageurl,
+                condition_report_id: `${uuid.v4()}`,
+            };
+            dbInstance.add_cars_to_sold(newSoldCar).then(cars => {
+                console.log('Cars added to sold-------------');
+            }).catch(err => console.log('Add cars to sold database error----------', err));
     },
     readCars: (req, res) => {
         const { id } = req.params;
@@ -78,6 +103,19 @@ module.exports = {
         dbInstance.update_user_car(updatedCar).then(updatedCar => {
             res.status(200).json({updatedCar});
         }).catch(err => console.log('Update user Cars database error----------', err));
+    },
+    bid: (req, res) => {
+        const dbInstance = req.app.get('db');
+        const { car_id } = req.params;
+        const { username } = req.session.user;
+        console.log('req.body------------', req.body);
+        const { bid } = req.body;
+        dbInstance.bid({car_id: +car_id, bid: {bid: +bid, username }})
+        .then(bids => {
+            const sortedBids = bids[0].bids.sort((a, b) => a.bid < b.bid);
+            // console.log('bids-----------', sortedBids);
+            res.json({message: 'Just Bidded', bids: sortedBids.map((bid, i) => i < 5 && bid)});
+        }).catch(err => console.log("Bidding Database Error----------", err));
     },
     delCars: (req, res) => {
       const { id, carId } = req.params;

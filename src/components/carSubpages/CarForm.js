@@ -13,11 +13,11 @@ class CarForm extends Component {
     }
     createPosting(e) {
         e.preventDefault();
-        const { id, type, make, model, year, odometer, location, price, description, username } = this.props;
+        const { id, type, make, model, year, odometer, location, price, description, username, expiration_date } = this.props;
         console.log('Year------------', year)
         console.log('------------id', id);
         const { imageurl } = this.state;
-        console.log({id, type, make, model, year, odometer, location, price, imageurl, username, description});
+        console.log({id, type, make, model, year, odometer, location, price, imageurl, username, description, expiration_date});
         axios.post(`/api/${+id}/cars`, { make, model, year, odometer, location, type, price, imageurl, username , description}).then(res =>{
             console.log(res.data.newCar)
             this.props.history.push('dashboard');
@@ -69,7 +69,11 @@ class CarForm extends Component {
                     <label>Starting Price</label>
                     <br/>
                     <input onChange={e => chgCarState(e, 'price', e.target.value)} type='number' required />
-                    <br/>      
+                    <br/>
+                    <label>Bid Expires?</label>
+                    <br/>
+                    <input onChange={e => chgCarState(e, 'expiration_date', e.target.value)} type='number' required />
+                    <br/>            
                     <label>Make</label>
                     <br/>
                     <input onChange={e => chgCarState(e, 'make', e.target.value)} required/>
@@ -115,6 +119,7 @@ const mapStateToProps = state => {
         model: state.car.car.model,
         year: state.car.car.year,
         description: state.car.car.description,
+        expiration_date: state.car.car.expiration_date,
         price: state.car.car.price,
         location: state.car.car.location,
         odometer: state.car.car.odometer,

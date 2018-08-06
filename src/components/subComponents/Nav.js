@@ -90,7 +90,7 @@ class Nav extends Component {
                         </div>                    
                     </div>
                 </nav>
-                <tr />
+                <hr />
                 <nav className={this.state.clickedNav ? 'mobile main-nav-clicked' : 'mobile main-nav-not-clicked'}>
                     <div className='links'>
                         <div onClick={() => this.clicked('nav1')}

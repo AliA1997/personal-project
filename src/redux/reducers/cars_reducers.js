@@ -15,6 +15,7 @@ const initialState = {
         odometer: null,//Done
         location: '',//Done
         description: '',//Done
+        expiration_date: '', //Done
         price: null,//Done
         imageurl: ''//Done
     },
@@ -89,6 +90,7 @@ const CHANGE_MODEL = 'CHANGE_MODEL';
 const CHANGE_YEAR = 'CHANGE_YEAR';
 const CHANGE_MILES = 'CHANGE_MILES';
 const CHANGE_DESCRIPTION = 'CHANGE_DESCRIPTION';
+const CHANGE_EXPIRATION_DATE = 'CHANGE_EXPIRATION_DATE';
 const CHANGE_CAR_TYPE = 'CHANGE_CAR_TYPE';
 const CHANGE_LOCATION = 'CHANGE_LOCATION';
 const CHANGE_PRICE = 'CHANGE_PRICE';
@@ -120,9 +122,8 @@ const  carReducer = (state=initialState, action) => {
         //Input changes in the car type field.
         case CHANGE_CAR_TYPE: 
         return {...state, car: Object.assign({}, state.car, {type: action.value})};
-
-        // //Input changes in car image field        
-        // case CHANGE_CAR_IMAGEURL: 
+        case CHANGE_EXPIRATION_DATE:
+        return {...state, car: Object.assign({}, state.car, {expiration_date: action.value})};
         // return {...state, car: Object.assign({}, state.car, {imageurl: action.value})};
         //Input changes in location field 
         case CHANGE_LOCATION: 
@@ -167,6 +168,11 @@ export const chgCarState = (e, type, value) => {
         case 'description':
         return {
             type: CHANGE_DESCRIPTION,
+            value
+        };
+        case 'expiration_date':
+        return {
+            type: CHANGE_EXPIRATION_DATE,
             value
         };
         case 'miles': 

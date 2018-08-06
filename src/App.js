@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import routes from './routes';
+import registerRoute from './registerRoute';
 import './App.css';
 import { Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -42,7 +43,7 @@ class App extends Component {
           <Nav loginProp={this.login} logoutProp={this.logout}/>
         </header>
         {account && account.username ? routes : null}
-        <Route path='/register' component={Register} />
+        {registerRoute}
         <br />
       </div>
     );

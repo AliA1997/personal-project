@@ -12,6 +12,10 @@ const bodyParser = require('body-parser');
 // const https = require('https');
 // const bcrypt = require('bcrypt');
 const cors = require('cors');
+///Middlewares 
+const checkBid = require('./middlewares/checkBid');
+const checkCar = require('./middlewares/checkCar');
+const checkUser = require('./middlewares/checkUser');
 ///////////
 const munther_auction_session = require('express-session');
 // const pg = require('pg');
@@ -66,23 +70,26 @@ setTimeout(() => {
     app.get('/api/cars', carsCtrl.readAllCars);
     //Seller Endpoints
     app.get('/api/:id/cars', carsCtrl.readCars);
-    app.post('/api/:id/cars', carsCtrl.crteCars);
+    app.post('/api/:id/cars', checkCar, carsCtrl.crteCars);
     app.patch('/api/:id/cars/:carId', carsCtrl.updCars);
     app.delete('/api/:id/cars/:carId', carsCtrl.delCars);
 
+    //Bidding Endpoints 
+    app.patch('/api/bid/:car_id', checkUser, checkBid, carsCtrl.bid);
+
     app.post('/api/register', userCtrl.register);
     // app.patch('/api/profile/:id', userCtrl.editProfile);
-    app.patch('/api/profile/:id/email', userCtrl.updateEmail);
-    app.patch('/api/profile/:id/name', userCtrl.updateName);
-    app.patch('/api/profile/:id/username', userCtrl.updateUsername);
-    app.patch('/api/profile/:id/dealer', userCtrl.updateDealer);
-    app.patch('/api/profile/:id/phone_number', userCtrl.updatePhoneNumber);
-    app.patch('/api/profile/:id/company_name', userCtrl.updateCompanyName);
-    app.patch('/api/profile/:id/zipcode', userCtrl.updateZipcode);
-    app.patch('/api/profile/:id/state', userCtrl.updateState);
-    app.patch('/api/profile/:id/address', userCtrl.updateAddress);
-    app.patch('/api/profile/:id/country', userCtrl.updateCountry);
-    app.patch('/api/profile/:id/city', userCtrl.updateCity);
+    app.patch('/api/profile/:id/email', checkUser,  userCtrl.updateEmail);
+    app.patch('/api/profile/:id/name', checkUser,  userCtrl.updateName);
+    app.patch('/api/profile/:id/username', checkUser,  userCtrl.updateUsername);
+    app.patch('/api/profile/:id/dealer', checkUser,  userCtrl.updateDealer);
+    app.patch('/api/profile/:id/phone_number', checkUser,  userCtrl.updatePhoneNumber);
+    app.patch('/api/profile/:id/company_name', checkUser,  userCtrl.updateCompanyName);
+    app.patch('/api/profile/:id/zipcode', checkUser,  userCtrl.updateZipcode);
+    app.patch('/api/profile/:id/state', checkUser,  userCtrl.updateState);
+    app.patch('/api/profile/:id/address', checkUser,  userCtrl.updateAddress);
+    app.patch('/api/profile/:id/country', checkUser,  userCtrl.updateCountry);
+    app.patch('/api/profile/:id/city', checkUser,  userCtrl.updateCity);
     app.post('/api/logout', userCtrl.logout);
     app.post('/api/login', userCtrl.login);
 

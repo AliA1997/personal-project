@@ -21,20 +21,19 @@ class Register extends Component {
         });
     }
 
-    register = () => {
+    register = (e) => {
+        e.preventDefault();
         //Racy issues when dealing with asynchronous code.
         // console.log(this.props.account)
         const { imageurl } = this.state;
         console.log('this.state----------------', this.state);
         const {name, dealer, username, email, password, phone_number, company_name, address, zipcode, city, state, country} = this.props;
         console.log(address, zipcode, city, state, country)
-        setTimeout(() => {
-            axios.post('/api/register', {name, username, email, dealer, password, imageurl, phone_number, company_name, address, zipcode, city, state, country}).then(res => {
-                userLogin(this.props.account);
-                alert('Successfully Registered');
-                this.props.history.push('dashboard');
-            }).catch(err => console.log('Register Error----------', err));
-        }, 100)
+        axios.post('/api/register', {name, username, email, dealer, password, imageurl, phone_number, company_name, address, zipcode, city, state, country}).then(res => {
+            userLogin(this.props.account);
+            alert('Successfully Registered');
+            this.props.history.push('dashboard');
+        }).catch(err => console.log('Register Error----------', err));
     }
 
     uploadImage(files) {
@@ -136,13 +135,7 @@ class Register extends Component {
                         <br/>    `            
                     </div> 
                     <p>Please Put Test Card Number 4242 4242 4242 4242 as Card Number so you would not be charged.</p> 
-                    <Checkout 
-                        name={name}
-                        description='Register!!!'
-                        email={email}
-                        amount={25}
-                        register={this.register}
-                    />
+                    <button onClick={(e) => this.register(e)}>Register</button>
                 </form>
             </div>
         );
