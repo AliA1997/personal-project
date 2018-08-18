@@ -8,7 +8,7 @@ const cloudinaryCtrl = require('./controllers/cloudinary_controller');
 const bodyParser = require('body-parser');
 // const helmet = require('helmet');
 // const fs = require('fs');
-// const path = require('path');
+const path = require('path');
 // const https = require('https');
 // const bcrypt = require('bcrypt');
 const cors = require('cors');
@@ -76,6 +76,11 @@ setTimeout(() => {
 
     //Bidding Endpoints 
     app.patch('/api/bid/:car_id', checkUser, checkBid, carsCtrl.bid);
+
+    //Cars Sold Endpoint 
+    app.get('/api/unbought_cars', checkUser, carsCtrl.readCarsNotBought);
+    app.get('/api/bought_cars', checkUser, carsCtrl.readBoughtCars);
+    app.patch('/api/buy_car/:id', checkUser, carsCtrl.boughtCar);
 
     app.post('/api/register', userCtrl.register);
     // app.patch('/api/profile/:id', userCtrl.editProfile);

@@ -1,0 +1,1 @@
+SELECT * FROM munther_auction_sold_cars WHERE bought = true;

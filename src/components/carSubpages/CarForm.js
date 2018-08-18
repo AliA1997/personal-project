@@ -18,7 +18,7 @@ class CarForm extends Component {
         console.log('------------id', id);
         const { imageurl } = this.state;
         console.log({id, type, make, model, year, odometer, location, price, imageurl, username, description, expiration_date});
-        axios.post(`/api/${+id}/cars`, { make, model, year, odometer, location, type, price, imageurl, username , description}).then(res =>{
+        axios.post(`/api/${+id}/cars`, { make, model, year, odometer, location, type, price, imageurl, username , description, expiration_date}).then(res =>{
             console.log(res.data.newCar)
             this.props.history.push('dashboard');
         }).catch(err => console.log("Axios Post Error-------------", err));

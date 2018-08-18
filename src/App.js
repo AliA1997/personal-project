@@ -39,9 +39,7 @@ class App extends Component {
     const { account } = this.props.user;
     return ( 
       <div className="app">
-        <header>
-          <Nav loginProp={this.login} logoutProp={this.logout}/>
-        </header>
+        <Nav loginProp={this.login} logoutProp={this.logout}/>
         {account && account.username ? routes : null}
         {registerRoute}
         <br />

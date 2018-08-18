@@ -27,11 +27,12 @@ module.exports = {
         }).catch(err => console.log('Read ALl Cars Error--------------', err));
     },
     crteCars: (req, res) => {
-        const { id, username, seller_id } = req.session.user;
-        console.log('id-------------', id);
+        const dbInstance = req.app.get('db');
+        const { user_id, username, seller_id } = req.session.user;
+        console.log('id-------------', user_id);
         const {type, make, model, year, odometer, location, price, imageurl, description, expiration_date} = req.body;
         const newCar = {
-            user_id: +id,
+            user_id: +user_id,
             username,
             seller_id,
             type,
@@ -44,36 +45,19 @@ module.exports = {
             price: Number(price), 
             imageurl,
             condition_report_id: `${uuid.v4()}`,
+            expiration_date: `${expiration_date} days`
         };
-        const task = nodeCron.schedule(`* * */${+expiration_date} * * *`, function() {
-            carBidExpire(dbInstance, newCar);
+        // const task = nodeCron.schedule(`* * */${+expiration_date} * * *`, function() {
+        //     carBidExpire(dbInstance, newCar);
+        // }, false);
+        nodeCron.schedule(`* ${expiration_date} * * *`, function() {
+            console.log('task hit---------');
+            carBidExpire(dbInstance, nsewCar);
         }, false);
         console.log(newCar);        
-        const dbInstance = req.app.get('db');
         dbInstance.create_car(newCar).then(newCar => {
             res.json({newCar});
         }).catch(err => console.log(err));
-    },
-    carBidExpire(dbInstance, newCar) {
-            const { user_id, type, make, model, year, odometer, location, price, imageurl, description} = newCar;
-            const newSoldCar = {
-                buyer: +user_id,
-                username,
-                seller: seller_id,
-                type,
-                make, 
-                model, 
-                year: Number(year), 
-                description,
-                odometer: Number(odometer), 
-                location,
-                price: Number(price), 
-                imageurl,
-                condition_report_id: `${uuid.v4()}`,
-            };
-            dbInstance.add_cars_to_sold(newSoldCar).then(cars => {
-                console.log('Cars added to sold-------------');
-            }).catch(err => console.log('Add cars to sold database error----------', err));
     },
     readCars: (req, res) => {
         const { id } = req.params;
@@ -118,10 +102,52 @@ module.exports = {
         }).catch(err => console.log("Bidding Database Error----------", err));
     },
     delCars: (req, res) => {
-      const { id, carId } = req.params;
+        const { id, carId } = req.params;
       const dbInstance = req.app.get('db');
       dbInstance.delete_car([id, carId]).then(() => {
           res.status(200).json({message: 'Delete was successful!!!'});
       }).catch(err => console.log('Delete Car Database Error------------', err));
-    }
+    },
+    //Car bought methods. 
+    readCarsNotBought: (req, res) => {
+        //Define the database request from the app's request 
+        const dbInstance = req.app.get('db');
+        dbInstance.read_cars_not_bought().then(cars => {
+            res.status(200).json({cars});
+        }).catch(err => console.log('Car Not Bought Database Error-----------', err));
+    },
+    readBoughtCars: (req, res) => {
+        const dbInstance = req.app.get('db');
+        dbInstance.read_bought_cars().then(cars => {
+            res.status(200).json({cars});
+        }).catch(err => console.log('Read Bought Cars Database Error-----------', err));
+    },
+    carBidExpire(dbInstance, newCar) {
+            const { user_id, type, make, model, year, odometer, location, price, imageurl, description} = newCar;
+            const newSoldCar = {
+                buyer: +user_id,
+                username,
+                seller: seller_id,
+                type,
+                make, 
+                model, 
+                year: Number(year), 
+                description,
+                odometer: Number(odometer), 
+                location,
+                price: Number(price), 
+                imageurl,
+                condition_report_id: `${uuid.v4()}`,
+            };
+            dbInstance.add_cars_to_sold(newSoldCar).then(cars => {
+                console.log('Cars added to sold-------------');
+            }).catch(err => console.log('Add cars to sold database error----------', err));
+    },
+    boughtCar: (req, res) => {
+        const dbInstance = req.app.get('db');
+        const { id } = req.params;
+        dbInstance.buy_car(id).then(cars => {
+            res.status(200).json({cars});
+        }).catch(err => console.log("Buy Car Error-----------------", err));
+    }, 
 }

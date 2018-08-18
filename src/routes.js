@@ -9,6 +9,7 @@ import StatePage from './components/carSubpages/StatePage';
 import ArbitrationPage from './components/servicesSubpages/ArbitrationPage';
 import CRMap from './components/servicesSubpages/CRMap';
 import UniqueVehicles from './components/servicesSubpages/UniqueVehicles';
+import CarCheckout from './components/userSubpages/CarCheckout/CarCheckout';
 //Main Components.
 import Dashboard from './components/Dashboard';
 import Home from './components/Home';
@@ -35,8 +36,9 @@ const routes = (
             <Route exact path='/services' component={Services} />
             <Route path='/services/condition_reporting' component={CRMap} />
             <Route path='/services/unique_vehicles' component={UniqueVehicles} />
-            <Route path='/services/arbitration' component={ArbitrationPage} />                        
-            <Route path='/dashboard' component={Dashboard} />         
+            <Route path='/services/arbitration' component={ArbitrationPage} />        
+            <Route path='/dashboard/checkout/:id' component={CarCheckout} />                
+            <Route exact path='/dashboard' component={Dashboard} />         
         </Switch>
     </div>
 )

@@ -33,3 +33,4 @@ CREATE TABLE munther_auction_sold_cars (
     imageurl TEXT,
     sold BOOLEAN
 );
+ALTER TABLE munther_auction_sold_cars ADD COLUMN description TEXT;
