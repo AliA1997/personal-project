@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import routes from './routes';
 import registerRoute from './registerRoute';
 import './App.css';
-import { Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { userLogin, userLogout } from './redux/reducers/user_reducers';
 import Nav from './components/subComponents/Nav';
-import Register from './components/userSubpages/Register';
+// import Register from './components/userSubpages/Register';
 import axios from 'axios';
 
 class App extends Component {
@@ -20,8 +20,8 @@ class App extends Component {
   }
 
   componentDidMount() {
-    const { account } = this.props.user;
-    const { userLogin, userLogout } = this.props;   
+    // const { account } = this.props.user;
+    const { userLogin } = this.props;   
     axios.get('/api/user-data').then(res => {
       if(res.data.user) {
         userLogin(res.data.user);

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { chgUserState, userLogin, userLogout } from '../../redux/reducers/user_reducers';
 import { Link } from 'react-router-dom';
 import Loader from './Loader';
-import { ENGINE_METHOD_DIGESTS } from 'constants';
 
 class Login extends Component {
     constructor() {
@@ -56,7 +55,7 @@ class Login extends Component {
     render() {
         //chgUserState <-- Method in reducer.
         const { chgUserState } = this.props;
-        const { account, isLoggedIn } = this.props.user; 
+        const { account } = this.props.user; 
         const { loading } = this.state;
         console.log('------AccountData', account);
         if(!loading) {

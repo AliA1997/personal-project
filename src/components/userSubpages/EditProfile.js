@@ -231,7 +231,7 @@ class EditProfile extends Component {
         // console.log(zipcode);
         // console.log(city);
         // console.log(state);
-        const { editProfile, editName, editUsername, editEmail, editPhoneNumber, editCompanyName, editImageurl, editDealer, editAddressInfo, editAddress, editZipcode, editCity, editState, editCountry } = this.state;
+        const { editProfile, editName, editUsername, editEmail, editPhoneNumber, editCompanyName, editImageurl, editDealer, editAddress, editZipcode, editCity, editState, editCountry } = this.state;
         return (
             <div>
                 <header>

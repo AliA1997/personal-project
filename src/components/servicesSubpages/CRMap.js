@@ -10,6 +10,9 @@ class CRMap extends Component {
             locations: []
         }
     }
+    componentWillUnmount() {
+        clearTimeout();
+    }
     render() {
         console.log(this.props.car.conditionReportLocations.AZ);
         return (
@@ -23,12 +26,14 @@ class CRMap extends Component {
                 </ul>
                 <h3>Condition Reporting Options</h3>
                 <table className='condition-report-table'>
-                    <tr>
-                        <td>Report Contains</td>
-                        <td>Good Basic Listing</td>
-                        <td>Better Seller Disclosure</td>     
-                        <td>Best Condition Report</td>                   
-                    </tr>
+                    <thead>
+                        <tr>
+                            <td>Report Contains</td>
+                            <td>Good Basic Listing</td>
+                            <td>Better Seller Disclosure</td>     
+                            <td>Best Condition Report</td>                   
+                        </tr>
+                    </thead>
                     <tbody>
                         <tr>
                             <td>Vehicle Description</td>
@@ -54,7 +59,6 @@ class CRMap extends Component {
                             <td><FaCheck /></td>     
                             <td><FaCheck /></td>     
                         </tr>
-                        <br />
                         <tr>
                             <td>Description of Options</td>
                             <td> </td>

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { chgUserState, chgAddressState, userLogin } from '../../redux/reducers/user_reducers';
 // import Dropzone from 'react-dropzone';
-import Checkout from '../subComponents/Checkout';
+// import Checkout from '../subComponents/Checkout';
 import axios from 'axios';
 import defaultPicture from '../../imgs/default-profile-picture.png';
 
@@ -32,8 +32,8 @@ class Register extends Component {
         axios.post('/api/register', {name, username, email, dealer, password, imageurl, phone_number, company_name, address, zipcode, city, state, country}).then(res => {
             userLogin(this.props.account);
             alert('Successfully Registered');
-            this.props.history.push('dashboard');
         }).catch(err => console.log('Register Error----------', err));
+        this.props.history.push('dashboard');
     }
 
     uploadImage(files) {
@@ -63,7 +63,7 @@ class Register extends Component {
     }
 
     render() {
-        const { name, email, username, states, chgUserState, chgAddressState } = this.props;
+        const { username, states, chgUserState, chgAddressState } = this.props;
         console.log('username---------------------', username);
         // console.log('states---------------', states);
         const { imageurl } = this.state;
@@ -71,12 +71,12 @@ class Register extends Component {
             <div className='register-view'>
                 <form>
                     <label>Profile Image</label><br/>
-                    <img src={imageurl || defaultPicture} alt={`${username} image!`} />
+                    <img src={imageurl || defaultPicture} alt={`${username}!`} />
                     <input type='file' name='Profile Picture' onChange={e => this.uploadImage(e.target.files)} />
                     <br/>
                     <label>Name</label>
                     <br/>
-                    <input autoComplete="name" min='4' onChange={e => chgUserState(e, 'name', e.target.value)} required/>
+                    <input autoComplete="name" min='4' onChange={e => chgUserState(e, 'name', e.target.value)} vrequired/>
                     <br/>
                     <label>Company Name</label>
                     <br/>
@@ -134,7 +134,6 @@ class Register extends Component {
                         <input autoComplete="country" className='country-input' value={'USA'} onChange={e => chgAddressState(e, 'country', e.target.value)} required/>
                         <br/>    `            
                     </div> 
-                    <p>Please Put Test Card Number 4242 4242 4242 4242 as Card Number so you would not be charged.</p> 
                     <button onClick={(e) => this.register(e)}>Register</button>
                 </form>
             </div>

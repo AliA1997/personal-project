@@ -67,7 +67,7 @@ class CarPage extends Component {
         }
     }
     render() {
-        const { loading, displayCar, buyCarButtonClicked, currentBid, doBid, bids, bidLoading } = this.state;
+        const { loading, displayCar, currentBid, doBid, bids, bidLoading } = this.state;
         console.log(displayCar);
         if(!loading) {
             return (
@@ -87,7 +87,7 @@ class CarPage extends Component {
                     <span>Starting Bid:</span><h6>{displayCar.price}</h6>
                     <div>
                         Recent Bids 
-                        {!bidLoading ? bids.length ? bids.map(bid => bid && <div>
+                        {!bidLoading && bids ? bids.length ? bids.map(bid => bid && <div>
                                                         <p>{bid.username}</p>
                                                         <p>${bid.bid}</p>
                                                     </div>) : null

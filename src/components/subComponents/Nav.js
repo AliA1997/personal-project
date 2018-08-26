@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import  Autocomplete  from 'react-autocomplete';
+// import  Autocomplete  from 'react-autocomplete';
 import logo from '../../logo.png';
 import { connect } from 'react-redux';
 import { retrieveCars } from '../../redux/reducers/cars_reducers';
 import { userLogin } from '../../redux/reducers/user_reducers';
 import FaAlignJustify from 'react-icons/lib/fa/align-justify';
-import FaSearch from 'react-icons/lib/fa/search';
+// import FaSearch from 'react-icons/lib/fa/search';
 import './Nav.css';
-import axios from 'axios';
+// import axios from 'axios';
 import Login from './Login';
 
 class Nav extends Component {

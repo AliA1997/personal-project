@@ -103,6 +103,7 @@ setTimeout(() => {
         res.sendFile(path.join(__dirname, '../build/index.html'));
     })
 }, 250)
+clearTimeout();
 //Profile Page
 
 app.listen(PORT, () => console.log('Listening on Port', PORT));

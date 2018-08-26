@@ -8,7 +8,7 @@ class Home extends Component {
         }
     }
     render() {
-        const { isMobile } = this.state;
+        // const { isMobile } = this.state;
         return (
             <div className='home-page'>
                 

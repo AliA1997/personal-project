@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import ProfilePage from './components/userSubpages/ProfilePage';
 import DeleteProfile from './components/userSubpages/DeleteProfile';
-import Register from './components/userSubpages/Register';
+// import Register from './components/userSubpages/Register';
 import CarForm from './components/carSubpages/CarForm';
 import CarPage from './components/carSubpages/CarPage';
 import StatePage from './components/carSubpages/StatePage';

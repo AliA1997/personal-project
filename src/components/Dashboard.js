@@ -5,22 +5,21 @@ import { connect } from 'react-redux';
 import { userLogin } from '../redux/reducers/user_reducers';
 import { retrieveCars } from '../redux/reducers/cars_reducers';
 import SellerCar from './subComponents/SellerCar';
+import CarForSale from './subComponents/CarForSale';
 
 class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
             isSeller: false,
-            generalInfoClicked: false,
             carsForSaleClicked: false,
             boughtVehiclesClicked: false,
-            searchHistoryClicked: false,
             profileInfoClicked: false,
             itemsToDisplay: [],
         }
     }
     componentDidMount() {
-        const { userLogin, retrieveCars } = this.props;
+        const { retrieveCars } = this.props;
         const { account } = this.props.user;
         console.log('id--------------', account.id);
         if(account.id) {
@@ -33,7 +32,7 @@ class Dashboard extends Component {
         }
     }
     render() {
-        const { isSeller, carsForSaleClicked, generalInfoClicked, profileInfoClicked, searchHistoryClicked, boughtVehiclesClicked  } = this.state;
+        const { carsForSaleClicked, profileInfoClicked, boughtVehiclesClicked  } = this.state;
         //Profile info 
         const { id, imageurl, name, username, company_name, phone_number, email } = this.props.user.account;
         //Car Info
@@ -44,12 +43,19 @@ class Dashboard extends Component {
 
 
                 <div className='dashboard-div'>
-                    <nav>
-                        <li className='profile-info-pane' onClick={e => this.setState({profileInfoClicked: !this.state.profileInfoClicked, generalInfoClicked: false})}>Profile</li>
-                        <li className='general-info-pane' onClick={e => this.setState({generalInfoClicked: !this.state.generalInfoClicked,  profileInfoClicked: false})}>General Info</li>
+                    <nav className='dashboard-nav'>
+                        <li className='profile-info-pane' onClick={e => this.setState({profileInfoClicked: !this.state.profileInfoClicked, carsForSaleClicked: false, boughtVehiclesClicked: false})}>
+                            Profile
+                        </li>
+                        <li className='general-info-pane' onClick={e => this.setState({carsForSaleClicked: !this.state.carsForSaleClicked,  profileInfoClicked: false, boughtVehiclesClicked: false})}>
+                            Cars For Sale
+                        </li>
+                        <li className='general-info-pane' onClick={e => this.setState({boughtVehiclesClicked: !this.state.boughtVehiclesClicked,  profileInfoClicked: false, carsForSaleClicked: false})}>
+                            Vehicles Bought
+                        </li>
                     </nav>
                     <div className='dashboard-results-div'>
-                        <div className='profile-info-div' style={{'display': profileInfoClicked && !generalInfoClicked ? 'inline-block' : 'none', width: '60vw'}} >
+                        <div className='profile-info-div' style={{'display': profileInfoClicked && !carsForSaleClicked && !boughtVehiclesClicked ? 'inline-block' : 'none', width: '60vw'}} >
                             <h5>Profile Info</h5><br/>
                             <img src={imageurl || 'https://vignette.wikia.nocookie.net/the-darkest-minds/images/4/47/Placeholder.png/revision/latest?cb=20160927044640'} alt={username} />
                             <p>{name}</p><br/>
@@ -64,11 +70,11 @@ class Dashboard extends Component {
                                 </button>
                             </Link>                        
                         </div>
-                        <div className='general-info-links-div' style={{'display': !profileInfoClicked && generalInfoClicked ? 'flex' : 'none', width: '60vw' }}>
-                            <p onClick={e => this.setState({carsForSaleClicked: !this.state.carsForSaleClicked, boughtVehiclesClicked: false, searchHistoryClicked: false})} style={{'display': isSeller ? 'inline-block' : 'inline'}}>Car for Sale</p>     
-                            <div className='seller-cars child-pane' style={{'display': !boughtVehiclesClicked && !searchHistoryClicked && carsForSaleClicked ? 'inline-block' : 'none'}}>
-                                {cars.map(c => <SellerCar className='seller-car' key={c.id} {...c}  years={years} locations={locations}/>)} 
-                            </div>
+                        <div className='general-info-links-div' style={{'display': carsForSaleClicked ? 'flex' : 'none', width: '80%' }}>
+                            {cars.length ? cars.map(c => <SellerCar className='seller-car' key={c.id} {...c}  years={years} locations={locations}/>) : <p>Did not list any cars!</p>} 
+                        </div>
+                        <div className='cars-bought-info-links-div' style={{'display': boughtVehiclesClicked ? 'flex' : 'none', width: '80%' }}>
+                            {cars.length ? cars.map(c => <CarForSale className='seller-car' key={c.id} {...c}  years={years} locations={locations}/>) : <p>Did not buy or won any bids for any cars!</p>} 
                         </div>
                     </div>
                 </div>

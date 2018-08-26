@@ -16,8 +16,12 @@ module.exports = {
         const { id } = req.params;
         const dbInstance = req.app.get('db');
         dbInstance.select_buyer_car(id).then(car => {
-            const sortedBids = car[0].bids.sort((a, b) => +a.bid < b.bid)
-            res.status(200).json({car, bids: sortedBids.map((bid, i) => i < 5 && bid)});
+            if(car[0].bids && car[0].bids.length) {
+                const sortedBids = car[0].bids.sort((a, b) => +a.bid < b.bid)
+                res.status(200).json({car, bids: sortedBids.map((bid, i) => i < 5 && bid)});
+            } else {
+                res.status(200).json({car});
+            }
         }).catch(err => console.log('Select Buyer Car Database Error-----------', err));
     },
     readAllCars: (req, res) => {
