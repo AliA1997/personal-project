@@ -1,5 +1,5 @@
-# SP Chat <--- https://sports-talk.now.sh
-  ## Where people can talk trash about others favorite teams. 
+# Mu-Auction <--- https://mu-auction.now.sh
+  ## Where people can buy cars and bid on cars. 
   ### Description 
   - Implement a REST API, using get, post, patch, put, delete. 
   - Use middleware for bids and creating posts.
